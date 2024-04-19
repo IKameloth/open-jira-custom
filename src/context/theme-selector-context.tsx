@@ -59,7 +59,9 @@ export const useThemeSelectorContext = () => {
   const ctx = useContext(ThemeSelectorContext);
 
   if (ctx === null) {
-    throw new Error("UIContext must be used within an UIProvider");
+    throw new Error(
+      "ThemeSelectorContext must be used within an ThemeSelectorProvider"
+    );
   }
 
   return ctx;
