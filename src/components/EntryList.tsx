@@ -40,7 +40,6 @@ export const EntryList = ({ status }: EntryListProps) => {
     <div
       onDrop={onDropEntry}
       onDragOver={allowDrop}
-      // className={isDragging ? styles.dragging : ""}
       style={isDragging ? drawStyles : undefined}
     >
       <Paper

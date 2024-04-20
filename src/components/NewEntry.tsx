@@ -9,7 +9,7 @@ const NewEntry = () => {
   const { setIsAddingEntry, isAddingEntry } = useUIContext();
   const [inputValue, setInputValue] = useState<string>("");
   const [touched, setTouched] = useState<boolean>(false);
-  const { addNewEntry } = useEntriesContext();
+  const { createNewEntry } = useEntriesContext();
 
   const onTextFieldChange = (event: ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
@@ -17,7 +17,7 @@ const NewEntry = () => {
 
   const onSave = () => {
     if (inputValue.length === 0) return false;
-    addNewEntry(inputValue);
+    createNewEntry(inputValue);
     setIsAddingEntry(false);
     setTouched(false);
     setInputValue("");

@@ -4,10 +4,7 @@ import { Entry } from "@/interfaces";
 export interface IEntry extends Entry {}
 
 export const entrySchema = new Schema({
-  description: {
-    type: String,
-    required: [true, "Please provide a description"],
-  },
+  description: { type: String, required: true },
   createdAt: { type: Number },
   status: {
     type: String,

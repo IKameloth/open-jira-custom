@@ -11,7 +11,7 @@ type EntriesProviderProps = {
 
 type EntriesContext = {
   entries: Entry[];
-  addNewEntry: (description: string) => void;
+  createNewEntry: (description: string) => void;
   updateEntry: (entry: Entry, showSnackbar?: boolean) => void;
 };
 
@@ -75,14 +75,12 @@ export const EntriesProvider = ({ children }: EntriesProviderProps) => {
   const { enqueueSnackbar } = useSnackbar();
   const [state, dispatch] = useReducer(entriesReducer, INIT_ENTRIES_STATE);
 
-  const addNewEntry = async (description: string) => {
+  const createNewEntry = async (description: string) => {
     try {
-      const { data } = await axios.post<Entry>("/api/entries", {
-        description,
-      });
+      const { data } = await axios.post<Entry>("/api/entries", { description });
       dispatch({ type: "[Entry] Add-Entry", payload: data });
     } catch (error: any) {
-      console.error("Error in addNewEntry Method");
+      console.error("Error in createNewEntry Method");
       throw new AxiosError(error, "500");
     }
   };
@@ -126,7 +124,7 @@ export const EntriesProvider = ({ children }: EntriesProviderProps) => {
     <EntriesContext.Provider
       value={{
         ...state,
-        addNewEntry,
+        createNewEntry,
         updateEntry,
       }}
     >
